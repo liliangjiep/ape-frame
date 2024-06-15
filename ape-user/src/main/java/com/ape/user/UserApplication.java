@@ -1,4 +1,4 @@
-package com.ape.user.controller;
+package com.ape.user;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
