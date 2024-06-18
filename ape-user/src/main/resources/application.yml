@@ -25,3 +25,13 @@ spring:
           slow-sql-millis: 2000
         wall:
           enabled: true
+sql:
+  beauty:
+    show: false
+
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: delete_flag
+      logic-delete-value: 1
+      logic-not-delete-value: 0

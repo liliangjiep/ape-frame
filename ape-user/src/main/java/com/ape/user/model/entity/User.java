@@ -35,6 +35,7 @@ public class User implements Serializable {
     private Date updateTime;
 
     @TableField(fill = FieldFill.INSERT)
+    @TableLogic
     private Integer deleteFlag;
 
     @TableField(fill = FieldFill.INSERT)

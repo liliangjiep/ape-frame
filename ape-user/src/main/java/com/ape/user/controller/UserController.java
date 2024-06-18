@@ -3,12 +3,11 @@ package com.ape.user.controller;
 import com.ape.user.model.entity.dto.UserDto;
 import com.ape.user.model.entity.request.UserRequest;
 import com.ape.user.service.UserService;
+import com.example.bean.Result;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 /**
  * @Author : 李良杰
@@ -28,5 +27,9 @@ public class UserController {
         BeanUtils.copyProperties(userReq, userDto);
         int count = userService.addUser(userDto);
         return count;
+    }
+    @DeleteMapping("/deleteUser/{id}")
+    public Result deleteUser(@PathVariable Integer id) {
+        return Result.ok(userService.deleteUser(id));
     }
 }

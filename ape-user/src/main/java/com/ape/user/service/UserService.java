@@ -10,4 +10,6 @@ import com.ape.user.model.entity.dto.UserDto;
  **/
 public interface UserService {
     int addUser(UserDto userDto);
+
+    int deleteUser(Integer id);
 }
