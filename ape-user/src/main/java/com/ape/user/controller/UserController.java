@@ -1,6 +1,8 @@
 package com.ape.user.controller;
 
 import com.ape.user.model.entity.dto.UserDto;
+import com.ape.user.model.entity.dto.UserPageDto;
+import com.ape.user.model.entity.request.UserPageRequest;
 import com.ape.user.model.entity.request.UserRequest;
 import com.ape.user.service.UserService;
 import com.example.bean.Result;
@@ -31,5 +33,11 @@ public class UserController {
     @DeleteMapping("/deleteUser/{id}")
     public Result deleteUser(@PathVariable Integer id) {
         return Result.ok(userService.deleteUser(id));
+    }
+    @PostMapping("/getUserPage")
+    public Result getUserPage(@RequestBody UserPageRequest userPageReq) {
+        UserPageDto userPageDto = new UserPageDto();
+        BeanUtils.copyProperties(userPageReq, userPageDto);
+        return Result.ok(userService.getUserPage(userPageDto));
     }
 }

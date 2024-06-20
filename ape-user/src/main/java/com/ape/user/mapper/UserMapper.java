@@ -2,6 +2,8 @@ package com.ape.user.mapper;
 
 import com.ape.user.model.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -12,4 +14,6 @@ import org.springframework.stereotype.Repository;
  **/
 @Repository
 public interface UserMapper extends BaseMapper<User> {
+    IPage<User> getUserPage(@Param("po") User user,
+                            IPage<User> userPoPage);;
 }

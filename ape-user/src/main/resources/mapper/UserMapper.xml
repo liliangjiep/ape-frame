@@ -3,6 +3,39 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.qj.sys.mapper.UserMapper">
-
+<mapper namespace="com.ape.user.mapper.UserMapper">
+    <select id="getUserPage" resultType="com.ape.user.model.entity.User">
+        select
+        id, name, age, create_by, create_time, update_by, update_time, delete_flag, version
+        from user
+        <where>
+            <if test="po.id != null">
+                and id = #{po.id}
+            </if>
+            <if test="po.name != null and po.name != ''">
+                and name = #{po.name}
+            </if>
+            <if test="po.age != null">
+                and age = #{po.age}
+            </if>
+            <if test="po.createBy != null and po.createBy != ''">
+                and create_by = #{po.createBy}
+            </if>
+            <if test="po.createTime != null">
+                and create_time = #{po.createTime}
+            </if>
+            <if test="po.updateBy != null and po.updateBy != ''">
+                and update_by = #{po.updateBy}
+            </if>
+            <if test="po.updateTime != null">
+                and update_time = #{po.updateTime}
+            </if>
+            <if test="po.deleteFlag != null">
+                and delete_flag = #{po.deleteFlag}
+            </if>
+            <if test="po.version != null">
+                and version = #{po.version}
+            </if>
+        </where>
+    </select>
 </mapper>
