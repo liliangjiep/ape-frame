@@ -11,6 +11,7 @@ import com.ape.user.model.entity.request.UserRequest;
 import com.ape.user.service.UserService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ape.bean.Result;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -75,7 +76,7 @@ public class UserController {
      * @param userRequest 实体
      * @return 新增结果
      */
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<User> add(@RequestBody UserRequest userRequest) {
         UserDto userDto = UserDtoConvert.INSTANCE.convertReqToDto(userRequest);
 
@@ -88,8 +89,8 @@ public class UserController {
      * @param userRequest 实体
      * @return 编辑结果
      */
-    @PutMapping
-    public ResponseEntity<User> edit(@RequestBody UserRequest userRequest) {
+    @PutMapping("/{id}")
+    public ResponseEntity<User> update(@RequestBody UserRequest userRequest) {
         UserDto userDto = UserDtoConvert.INSTANCE.convertReqToDto(userRequest);
 
         return ResponseEntity.ok(this.userService.update(userDto));
@@ -101,8 +102,8 @@ public class UserController {
      * @param id 主键
      * @return 删除是否成功
      */
-    @DeleteMapping
-    public ResponseEntity<Boolean> deleteById(Long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> deleteById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(this.userService.deleteById(id));
     }
 }
