@@ -13,6 +13,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @Author : 李良杰
@@ -21,6 +22,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * version :1.0
  **/
 @Configuration
+@Slf4j
 public class RedisConfig {
 
     @Bean
