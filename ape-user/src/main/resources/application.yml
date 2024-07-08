@@ -46,7 +46,9 @@ mybatis-plus:
       logic-delete-field: delete_flag
       logic-delete-value: 1
       logic-not-delete-value: 0
-
+init:
+  cache:
+    enable: true
 
 # Swagger配置
 swagger:
