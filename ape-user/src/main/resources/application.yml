@@ -25,6 +25,17 @@ spring:
           slow-sql-millis: 2000
         wall:
           enabled: true
+redis:
+  host: 127.0.0.1
+  port: 6379
+  database: 0
+  # 可以基于lettuce，也可以基于jedis
+  lettuce:
+    pool:
+      max-active: 20 # 最大连接数
+      min-idle: 0 # 最小空闲连接数
+      max-idle: 8 # 最大空闲连接数
+      max-wait: -1 # 最大等待时间，-1表示无限期等待
 sql:
   beauty:
     show: false
@@ -35,3 +46,17 @@ mybatis-plus:
       logic-delete-field: delete_flag
       logic-delete-value: 1
       logic-not-delete-value: 0
+init:
+  cache:
+    enable: true
+
+# Swagger配置
+swagger:
+  base-package: com.ape.user.controller # 通常扫描controller包
+  title: ape-sys API文档
+  description: ape-sys的RESTful API文档
+  contact:
+    name: 李良杰
+    url: https://github.com/liliangjiep/ape-frame.git
+    email: someone@qq.com
+  version: 1.0

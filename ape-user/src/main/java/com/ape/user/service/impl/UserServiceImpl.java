@@ -1,8 +1,13 @@
 package com.ape.user.service.impl;
 
 import com.ape.entity.PageResult;
+import com.ape.page.PageResponse;
+import com.ape.user.convert.PageUserDtoConvert;
+import com.ape.user.convert.PageUserPoConvert;
+import com.ape.user.mapper.UserDao;
 import com.ape.user.mapper.UserMapper;
 import com.ape.user.model.entity.User;
+import com.ape.user.model.entity.dto.PageUserDto;
 import com.ape.user.model.entity.dto.UserDto;
 import com.ape.user.model.entity.dto.UserPageDto;
 import com.ape.user.service.UserService;
@@ -11,6 +16,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @Author : 李良杰
@@ -22,6 +29,8 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private UserDao userDao;
 
     @Override
     public int addUser(UserDto userDto) {
@@ -48,5 +57,73 @@ public class UserServiceImpl implements UserService {
         // 调用自定义的分页工具类PageResult，将结果进行装载
         userPoPageResult.loadData(userPage);
         return userPoPageResult;
+    }
+    /**
+     * 通过ID查询单条数据
+     *
+     * @param id 主键
+     * @return 实例对象
+     */
+    @Override
+    public User queryById(Long id) {
+        return this.userDao.queryById(id);
+    }
+
+    /**
+     * 分页查询
+     *
+     * @param pageUserDto 分页对象
+     * @return 查询结果
+     */
+    @Override
+    public PageResponse<User> queryByPage(PageUserDto pageUserDto) {
+        User user = PageUserPoConvert.INSTANCE.convertPageDtoToPo(pageUserDto);
+        PageResponse<User> pageResponse = new PageResponse<>();
+        pageResponse.setCurrent(pageUserDto.getPageNo());
+        pageResponse.setPageSize(pageUserDto.getPageSize());
+        Long pageStart = pageResponse.getPageStart();
+        long total = this.userDao.count(user);
+        List<User> sysUserList = this.userDao.queryAllByLimit(user, pageStart, pageUserDto.getPageSize());
+        pageResponse.setTotal(total);
+        pageResponse.setRecords(sysUserList);
+        return pageResponse;
+    }
+
+    /**
+     * 新增数据
+     *
+     * @param userDto 实例对象
+     * @return 实例对象
+     */
+    @Override
+    public User insert(UserDto userDto) {
+        User user = PageUserPoConvert.INSTANCE.convertDtoToPo(userDto);
+
+        this.userDao.insert(user);
+        return user;
+    }
+
+    /**
+     * 修改数据
+     *
+     * @param userDto 实例对象
+     * @return 实例对象
+     */
+    @Override
+    public User update(UserDto userDto) {
+        User user = PageUserPoConvert.INSTANCE.convertDtoToPo(userDto);
+        this.userDao.update(user);
+        return this.queryById(user.getId());
+    }
+
+    /**
+     * 通过主键删除数据
+     *
+     * @param id 主键
+     * @return 是否成功
+     */
+    @Override
+    public boolean deleteById(Long id) {
+        return this.userDao.deleteById(id) > 0;
     }
 }

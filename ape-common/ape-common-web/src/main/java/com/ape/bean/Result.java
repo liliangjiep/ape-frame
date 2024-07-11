@@ -1,4 +1,4 @@
-package com.example.bean;
+package com.ape.bean;
 
 import lombok.Data;
 

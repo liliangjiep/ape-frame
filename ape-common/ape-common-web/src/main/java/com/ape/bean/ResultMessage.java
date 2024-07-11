@@ -1,4 +1,4 @@
-package com.example.bean;
+package com.ape.bean;
 
 /**
  * @Author : 李良杰
