@@ -1,6 +1,6 @@
-package com.ape.config.init;
+package com.ape.init;
 
-import com.ape.config.util.SpringContextUtil;
+import com.ape.util.SpringContextUtil;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.ApplicationContext;

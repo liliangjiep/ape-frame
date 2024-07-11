@@ -1,4 +1,4 @@
-package com.ape.config.util;
+package com.ape.util;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,4 +92,5 @@ public class RedisUtil {
     public Object rank(String key, Object obj) {
         return redisTemplate.opsForZSet().rank(key, obj);
     }
+
 }

@@ -1,4 +1,4 @@
-package com.ape.config.util;
+package com.ape.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

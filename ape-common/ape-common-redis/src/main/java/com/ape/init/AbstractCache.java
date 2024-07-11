@@ -1,4 +1,4 @@
-package com.ape.config.init;
+package com.ape.init;
 import org.springframework.stereotype.Component;
 
 

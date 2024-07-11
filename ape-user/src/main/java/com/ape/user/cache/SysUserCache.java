@@ -1,6 +1,6 @@
 package com.ape.user.cache;
 
-import com.ape.config.init.AbstractCache;
+import com.ape.init.AbstractCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
