@@ -60,3 +60,6 @@ swagger:
     url: https://github.com/liliangjiep/ape-frame.git
     email: someone@qq.com
   version: 1.0
+
+logging:
+  config: classpath:log4j-spring.xml
