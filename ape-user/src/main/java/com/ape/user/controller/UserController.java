@@ -1,5 +1,6 @@
 package com.ape.user.controller;
 
+import com.ape.bean.Result;
 import com.ape.user.convert.PageUserDtoConvert;
 import com.ape.user.convert.UserDtoConvert;
 import com.ape.user.model.entity.User;
@@ -10,10 +11,10 @@ import com.ape.user.model.entity.request.UserPageRequest;
 import com.ape.user.model.entity.request.UserRequest;
 import com.ape.user.service.UserService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ape.bean.Result;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

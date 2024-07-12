@@ -15,6 +15,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -65,6 +67,7 @@ public class UserServiceImpl implements UserService {
      * @return 实例对象
      */
     @Override
+    @Cacheable(cacheNames = "SysUserBy", key = "'querySysUserById'+#id")
     public User queryById(Long id) {
         return this.userDao.queryById(id);
     }
@@ -110,6 +113,7 @@ public class UserServiceImpl implements UserService {
      * @return 实例对象
      */
     @Override
+    @CacheEvict(cacheNames = "SysUserBy", key = "'querySysUserById'+#id")
     public User update(UserDto userDto) {
         User user = PageUserPoConvert.INSTANCE.convertDtoToPo(userDto);
         this.userDao.update(user);
