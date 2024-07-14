@@ -24,9 +24,15 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
-            <version>2.5.3</version>
+        </dependency>
+        <!-- 异步日志(引入高性能队列) -->
+        <!-- 保留disruptor依赖，但要注意与Log4j2版本的兼容性，当前版本是3.4.2 -->
+        <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
         </dependency>
     </dependencies>
+
 
 
 </project>

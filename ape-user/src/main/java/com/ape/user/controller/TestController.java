@@ -57,5 +57,13 @@ public class TestController {
         log.info("分布式锁获取：{}", result);
         return String.valueOf(result);
     }
-
+    @GetMapping("/testLog")
+    public void testLog() {
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i < 1000000; i++) {
+            log.info("这是{}条日志！", i);
+        }
+        long endTime = System.currentTimeMillis();
+        log.info("当前耗时：{}", endTime - startTime);
+    }
 }

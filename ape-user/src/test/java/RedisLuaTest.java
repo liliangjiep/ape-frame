@@ -1,11 +1,11 @@
 import com.ape.user.UserApplication;
 import com.ape.user.redislua.CompareAndSetLua;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 
