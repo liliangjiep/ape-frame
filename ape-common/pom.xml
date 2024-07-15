@@ -14,7 +14,8 @@
         <module>ape-common-redis</module>
         <module>ape-common-log</module>
         <module>ape-common-starter</module>
-        <module>ape-test</module>
+        <module>ape-common-test</module>
+        <module>ape-common-tool</module>
     </modules>
     <parent>
         <artifactId>ape-dependencies</artifactId>
