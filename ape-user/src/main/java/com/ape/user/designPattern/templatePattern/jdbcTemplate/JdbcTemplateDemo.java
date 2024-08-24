@@ -1,4 +1,4 @@
-package com.ape.user.designPattern.jdbcTemplate;
+package com.ape.user.designPattern.templatePattern.jdbcTemplate;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;

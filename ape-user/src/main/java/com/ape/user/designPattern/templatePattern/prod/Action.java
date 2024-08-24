@@ -1,4 +1,4 @@
-package com.ape.user.designPattern.prod;
+package com.ape.user.designPattern.templatePattern.prod;
 
 /**
  * @Author : 李良杰
